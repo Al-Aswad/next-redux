@@ -1,11 +1,11 @@
-import { createAction, createReducer } from '@reduxjs/toolkit';
+import { createAction, createReducer, createSlice } from '@reduxjs/toolkit';
 
-export const increment:any = createAction<number>('increment/couter');
-export const decrement:any = createAction<number>('decrement/couter');
-export const incrementAmount:any = createAction<number>('incrementAmount/couter',);
+// export const increment:any = createAction<number>('increment/couter');
+// export const decrement:any = createAction<number>('decrement/couter');
+// export const incrementAmount:any = createAction<number>('incrementAmount/couter',);
 
-let action= incrementAmount(20);
-console.log(action);
+// let action= incrementAmount(20);
+// console.log(action);
 
 //reducer
 //1. using builder notation
@@ -26,15 +26,37 @@ const initialState={
 // });
 
 // 2. using map notation
-export const counterSlice = createReducer(initialState, {
-    [increment]: (state, action)=>{
-        state.value ++;
-    },
-    [decrement]: (state, action)=>{
-        state.value--
-    } ,
-    [incrementAmount]: (state, action:any)=>{
-        state.value += action.payload;
+// export const counterSlice = createReducer(initialState, {
+//     [increment]: (state, action)=>{
+//         state.value ++;
+//     },
+//     [decrement]: (state, action)=>{
+//         state.value--
+//     } ,
+//     [incrementAmount]: (state, action:any)=>{
+//         state.value += action.payload;
+//     }
+// });
+
+// 3. Slice notation
+export const counterSlice = createSlice({
+    name: 'counter',
+    initialState: initialState,
+    reducers: {
+        increment: (state, action)=>{
+            state.value ++;
+        },
+        decrement: (state, action)=>{
+            state.value--
+        },
+        incrementAmount: (state, action:any)=>{
+            state.value += action.payload;
+        }
+
     }
-});
+} );
+
+export const {increment, decrement, incrementAmount} = counterSlice.actions;
+
+export default counterSlice.reducer;
 
