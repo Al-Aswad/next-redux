@@ -6,7 +6,7 @@ import { decrement, increment, incrementAmount } from '../redux/slices/counterSl
 
 const Home: NextPage = () => {
   const dispatch = useDispatch()
-  const counter:any= useSelector(state=>state?.counter)
+  const counter:any= useSelector<any>(state=>state.counter)
   console.log(counter.value)
   return (
     <div>

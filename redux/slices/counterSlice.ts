@@ -2,7 +2,10 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 
 export const increment = createAction('increment/couter');
 export const decrement = createAction('decrement/couter');
-export const incrementAmount = createAction('incrementAmount/couter');
+export const incrementAmount = createAction<number>('incrementAmount/couter',);
+
+let action= incrementAmount(20);
+console.log(action);
 
 //reducer
 //1. using builder notation
