@@ -1,7 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { useDispatch, useSelector } from 'react-redux'
+import { decrement, increment, incrementAmount } from '../redux/slices/counterSlice'
+
 
 const Home: NextPage = () => {
+  const dispatch = useDispatch()
+  const counter:any= useSelector(state=>state?.counter)
+  console.log(counter.value)
   return (
     <div>
       <Head>
@@ -10,7 +16,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Belajar Redux</h1>
+      <div>
+            <h1>Belajar Redux</h1>
+            Count : {counter?.value}
+      </div>
+      <div>
+        <button onClick={()=>dispatch(increment())}>+</button>
+        <button onClick={()=>dispatch(decrement())}>-</button>
+        <button onClick={()=>dispatch(incrementAmount(20))}>+20</button>
+
+      </div>
      
     </div>
   )
