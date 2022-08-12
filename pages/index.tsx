@@ -21,10 +21,9 @@ const Home: NextPage = () => {
             Count : {counter?.value}
       </div>
       <div>
-        <button onClick={()=>dispatch(increment())}>+</button>
-        <button onClick={()=>dispatch(decrement())}>-</button>
+        <button onClick={()=>dispatch(increment(2))}>+</button>
+        <button onClick={()=>dispatch(decrement(1))}>-</button>
         <button onClick={()=>dispatch(incrementAmount(20))}>+20</button>
-
       </div>
      
     </div>
